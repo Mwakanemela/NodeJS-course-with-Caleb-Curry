@@ -1,5 +1,19 @@
+////////////////////////
+//////// NOTES 1 ///////
+\\\\\\\\\\\\\\\\\\\\\\\\
+
 - when using http to create server no dependencies are required(its in built in nodejs)
 - npm init -> to initialize nodejs project
 - "scripts": {
     "start": "node src/app.js"
   }, -> this ensures that when i write npm run start it executes app.js in src: the start can have any name
+
+////////////////////////
+//////// NOTES 2 ///////
+\\\\\\\\\\\\\\\\\\\\\\\\
+- npm install uuid -> this package allows us to generate random ids
+- git reset HEAD <directory-name> -> this helps to unstage a directory you have staged in git 
+- package.json -> when you install dependencies it says what range of possible versions are okay to be used
+- package-lock.json -> says what version of the package is actually being used
+- add "type":"module" in package.json if you want to use import for importing modules (es6 type)
+  require method is for default javascript
