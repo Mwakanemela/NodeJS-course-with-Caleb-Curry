@@ -24,3 +24,5 @@
 //////// NOTES 3 ///////
 \\\\\\\\\\\\\\\\\\\\\\\\
 - when creating router endpoints always remember that the functions take request, response parameters
+- npm i nodemon -> good for running server so that for every change you dont have to restart the server 
+- npx nodemon <server-file> -> one way to run a server with nodemon
