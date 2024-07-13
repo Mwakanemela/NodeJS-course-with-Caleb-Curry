@@ -17,3 +17,5 @@
 - package-lock.json -> says what version of the package is actually being used
 - add "type":"module" in package.json if you want to use import for importing modules (es6 type)
   require method is for default javascript
+
+- visit: https://www.toptal.com/developers/gitignore/api/node,vuejs,webstorm to get a list of most .gitignore files
