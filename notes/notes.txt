@@ -1,1 +1,5 @@
 - when using http to create server no dependencies are required(its in built in nodejs)
+- npm init -> to initialize nodejs project
+- "scripts": {
+    "start": "node src/app.js"
+  }, -> this ensures that when i write npm run start it executes app.js in src: the start can have any name

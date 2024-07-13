@@ -1,0 +1,11 @@
+{
+  "name": "customers",
+  "version": "1.0.0",
+  "description": "Creating a nodejs project for customers",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "author": "Mwakanemela Kayange",
+  "license": "ISC"
+}
