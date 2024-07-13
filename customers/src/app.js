@@ -1,3 +1,6 @@
-const { v4: uuidv4 } = require("uuid");
-
-console.log(uuidv4());
+const express = require("express");
+const app = express();
+const PORT = 2024;
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
+});
