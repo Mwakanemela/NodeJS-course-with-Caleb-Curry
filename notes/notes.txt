@@ -19,3 +19,8 @@
   require method is for default javascript
 
 - visit: https://www.toptal.com/developers/gitignore/api/node,vuejs,webstorm to get a list of most .gitignore files
+
+////////////////////////
+//////// NOTES 3 ///////
+\\\\\\\\\\\\\\\\\\\\\\\\
+- when creating router endpoints always remember that the functions take request, response parameters
