@@ -47,7 +47,17 @@ app.get("/api/customers/:customerId", async (req, res) => {
     res.status(500).send(error);
   }
 });
-
+app.put("/api/customers/update/:customerId", async (req, res) => {
+  try {
+    // console.log("inside update");
+    const { customerId } = req.params;
+    // console.log(customerId);
+    const result = await Customer.replaceOne({ _id: customerId }, req.body);
+    res.status(201).send({ result: result, message: "Update successful" });
+  } catch (error) {
+    res.status(500).send({ error });
+  }
+});
 app.post("/api/customers", async (req, res) => {
   // res.send(req.body);
   // console.log(req.body);
