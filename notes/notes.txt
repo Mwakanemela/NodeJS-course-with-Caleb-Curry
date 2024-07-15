@@ -26,3 +26,15 @@
 - when creating router endpoints always remember that the functions take request, response parameters
 - npm i nodemon -> good for running server so that for every change you dont have to restart the server 
 - npx nodemon <server-file> -> one way to run a server with nodemon
+
+
+////////////////////////
+//////// NOTES 4 ///////
+\\\\\\\\\\\\\\\\\\\\\\\\
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+- the above code allows us to post json data via express server
+
+////////////////////////
+//////// NOTES 5 ///////
+\\\\\\\\\\\\\\\\\\\\\\\\
