@@ -1,11 +1,21 @@
 const express = require("express");
+const mongoose = require("mongoose");
+// const dotenv = require("dotenv");
+
+// dotenv.config();
+
 const app = express();
+mongoose.set("strictQuery", false);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const PORT = 2024;
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
 
+const PORT = process.env.PORT || 2024;
+const MONGO_DB_CONNECTION_STRING = process.env.MONGO_DB_CONNECTION_STRING;
 const customers = [
   {
     name: "JavaScript",
@@ -35,6 +45,17 @@ app.post("/api/customers", (req, res) => {
 app.post("/", (request, response) => {
   response.send("Welcome to NodeJS post request");
 });
-app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}`);
-});
+
+const connectToMongoDB = async () => {
+  try {
+    await mongoose.mongoose.connect(MONGO_DB_CONNECTION_STRING);
+    console.log("connected to mongodb atlas yea!!!");
+    app.listen(PORT, () => {
+      console.log(`App listening on port ${PORT}`);
+    });
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
+connectToMongoDB();

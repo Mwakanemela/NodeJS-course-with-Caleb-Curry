@@ -38,3 +38,7 @@ app.use(express.urlencoded({extended: true}))
 ////////////////////////
 //////// NOTES 5 ///////
 \\\\\\\\\\\\\\\\\\\\\\\\
+ - password -> CMkrckcG6w7rakcx
+ - npm i mongoose -> use when you want to connect to mongodb
+ - mongoose.set("strictQuery", false); ->This means your queries can include any fields, regardless of whether they're specified in the Mongoose schema.
+ - npm i dotenv ->  this will help to read a .env file
