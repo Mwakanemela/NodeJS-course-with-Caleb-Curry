@@ -36,8 +36,13 @@ app.get("/api/customers", async (req, res) => {
 app.get("/api/customers/:customerId", async (req, res) => {
   try {
     const { customerId } = req.params;
-    const result = await Customer.findById(customerId);
-    res.status(200).send(result);
+    const customer = await Customer.findById(customerId);
+
+    if (!customer) {
+      res.status(404).send({ error: "Customer not found" });
+      return;
+    }
+    res.status(200).send(customer);
   } catch (error) {
     res.status(500).send(error);
   }
