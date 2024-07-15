@@ -49,7 +49,7 @@ app.post("/api/customers", async (req, res) => {
       .status(201)
       .send({ customer: result, message: "Customer saved successfully" });
     // console.log("Saved Successfully");
-  } catch (error) {
+  } catch (e) {
     res.status(500).json({ error: e.message });
   }
 });

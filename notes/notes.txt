@@ -48,6 +48,6 @@ app.use(express.urlencoded({extended: true}))
 //////// NOTES 6 ///////
 \\\\\\\\\\\\\\\\\\\\\\\\
 Summary of Differences
-Purpose: res.send() is more general, while res.json() is specifically for JSON data.
-Content-Type: res.send() sets the content type based on the response data, whereas res.json() always sets it to application/json.
-Stringification: res.json() automatically stringifies objects, while res.send() can handle various types without automatic conversion.
+ - Purpose: res.send() is more general, while res.json() is specifically for JSON data.
+ - Content-Type: res.send() sets the content type based on the response data, whereas res.json() always sets it to application/json.
+ - Stringification: res.json() automatically stringifies objects, while res.send() can handle various types without automatic conversion.
