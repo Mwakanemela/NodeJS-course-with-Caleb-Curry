@@ -41,4 +41,13 @@ app.use(express.urlencoded({extended: true}))
  - password -> CMkrckcG6w7rakcx
  - npm i mongoose -> use when you want to connect to mongodb
  - mongoose.set("strictQuery", false); ->This means your queries can include any fields, regardless of whether they're specified in the Mongoose schema.
- - npm i dotenv ->  this will help to read a .env file
+ - npm i dotenv ->  this will help to read a .env file - ensure your .env file is in the root directory of the project
+
+
+////////////////////////
+//////// NOTES 6 ///////
+\\\\\\\\\\\\\\\\\\\\\\\\
+Summary of Differences
+Purpose: res.send() is more general, while res.json() is specifically for JSON data.
+Content-Type: res.send() sets the content type based on the response data, whereas res.json() always sets it to application/json.
+Stringification: res.json() automatically stringifies objects, while res.send() can handle various types without automatic conversion.
