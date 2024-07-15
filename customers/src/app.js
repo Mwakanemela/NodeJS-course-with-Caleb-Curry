@@ -23,8 +23,14 @@ app.get("/", (request, response) => {
 });
 
 app.get("/api/customers", async (req, res) => {
-  const result = await Customer.find();
-  res.send({ customers: result });
+  try {
+    const result = await Customer.find();
+    res.send({ customers: result });
+  } catch (e) {
+    res.status(500).json({
+      error: e.message,
+    });
+  }
 });
 
 app.post("/api/customers", async (req, res) => {
@@ -32,13 +38,17 @@ app.post("/api/customers", async (req, res) => {
   // console.log(req.body);
   const { name, industry } = req.body;
 
-  const customer = new Customer({
-    name: name,
-    industry: industry,
-  });
-  const result = await customer.save();
-  res.send({ customer: result, message: "Customer saved successfully" });
-  console.log("Saved Successfully");
+  try {
+    const customer = new Customer({
+      name: name,
+      industry: industry,
+    });
+    const result = await customer.save();
+    res.send({ customer: result, message: "Customer saved successfully" });
+    // console.log("Saved Successfully");
+  } catch (error) {
+    res.status(500).json({ error: e.message });
+  }
 });
 
 app.post("/", (request, response) => {
