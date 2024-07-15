@@ -25,7 +25,7 @@ app.get("/", (request, response) => {
 app.get("/api/customers", async (req, res) => {
   try {
     const result = await Customer.find();
-    res.send({ customers: result });
+    res.status(200).send({ customers: result });
   } catch (e) {
     res.status(500).json({
       error: e.message,
@@ -39,12 +39,15 @@ app.post("/api/customers", async (req, res) => {
   const { name, industry } = req.body;
 
   try {
-    const customer = new Customer({
-      name: name,
-      industry: industry,
-    });
+    // const customer = new Customer({
+    //   name: name,
+    //   industry: industry,
+    // });
+    const customer = new Customer(req.body);
     const result = await customer.save();
-    res.send({ customer: result, message: "Customer saved successfully" });
+    res
+      .status(201)
+      .send({ customer: result, message: "Customer saved successfully" });
     // console.log("Saved Successfully");
   } catch (error) {
     res.status(500).json({ error: e.message });
