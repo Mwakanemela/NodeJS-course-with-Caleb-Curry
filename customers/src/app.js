@@ -17,38 +17,30 @@ if (process.env.NODE_ENV !== "production") {
 
 const PORT = process.env.PORT || 2024;
 const MONGO_DB_CONNECTION_STRING = process.env.MONGO_DB_CONNECTION_STRING;
-const customers = [
-  {
-    name: "JavaScript",
-    industry: "Frontend and Backend",
-  },
-  {
-    name: "HTML",
-    industry: "Frontend",
-  },
-  {
-    name: "CSS",
-    usedFor: "Styling",
-  },
-];
 
-const customer = new Customer({
-  name: "Mwakanemela",
-  industry: "Software Engineer",
-});
-// customer.save() -> will save the customer object to mongodb
 app.get("/", (request, response) => {
   response.send("Welcome to my NodeJS Server(API) get...");
 });
 
-app.get("/api/customers", (req, res) => {
-  res.send({ customers: customer });
+app.get("/api/customers", async (req, res) => {
+  const result = await Customer.find();
+  res.send({ customers: result });
 });
 
-app.post("/api/customers", (req, res) => {
-  res.send(req.body);
-  console.log(req.body);
+app.post("/api/customers", async (req, res) => {
+  // res.send(req.body);
+  // console.log(req.body);
+  const { name, industry } = req.body;
+
+  const customer = new Customer({
+    name: name,
+    industry: industry,
+  });
+  const result = await customer.save();
+  res.send({ customer: result, message: "Customer saved successfully" });
+  console.log("Saved Successfully");
 });
+
 app.post("/", (request, response) => {
   response.send("Welcome to NodeJS post request");
 });
