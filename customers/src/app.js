@@ -33,6 +33,16 @@ app.get("/api/customers", async (req, res) => {
   }
 });
 
+app.get("/api/customers/:customerId", async (req, res) => {
+  try {
+    const { customerId } = req.params;
+    const result = await Customer.findById(customerId);
+    res.status(200).send(result);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
 app.post("/api/customers", async (req, res) => {
   // res.send(req.body);
   // console.log(req.body);
