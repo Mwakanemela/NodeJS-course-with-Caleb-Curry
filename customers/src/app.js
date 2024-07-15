@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const Customer = require("./models/customer");
 // const dotenv = require("dotenv");
 
 // dotenv.config();
@@ -30,12 +31,18 @@ const customers = [
     usedFor: "Styling",
   },
 ];
+
+const customer = new Customer({
+  name: "Mwakanemela",
+  industry: "Software Engineer",
+});
+// customer.save() -> will save the customer object to mongodb
 app.get("/", (request, response) => {
   response.send("Welcome to my NodeJS Server(API) get...");
 });
 
 app.get("/api/customers", (req, res) => {
-  res.send({ customers: customers });
+  res.send({ customers: customer });
 });
 
 app.post("/api/customers", (req, res) => {
