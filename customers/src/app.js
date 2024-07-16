@@ -53,9 +53,23 @@ app.put("/api/customers/update/:customerId", async (req, res) => {
     const { customerId } = req.params;
     // console.log(customerId);
     const result = await Customer.replaceOne({ _id: customerId }, req.body);
-    res.status(201).send({ result: result, message: "Update successful" });
+    res
+      .status(201)
+      .send({
+        acknowledged: result.acknowledged,
+        message: "Update successful",
+      });
   } catch (error) {
     res.status(500).send({ error });
+  }
+});
+app.delete("/api/customers/delete/:customerId", async (req, res) => {
+  const customerId = req.params.customerId;
+  try {
+    const result = await Customer.deleteOne({ _id: customerId });
+    res.status(200).send({ delete_count: result.deletedCount });
+  } catch (error) {
+    console.log(`on delete error ${error}`);
   }
 });
 app.post("/api/customers", async (req, res) => {
